@@ -18,7 +18,9 @@ module.exports.List = List;
 
 module.exports.main = main;
 async function main() {
-  await mongoose.connect('mongodb+srv://Admin:Bw2b80l9M3qm3E7t@cluster0.hk51adk.mongodb.net/todoListDB');  
+  const mongoURL = 'mongodb+srv://Admin:'+process.env.MONGODB_ATLAS_SECRET+'@'+process.env.MONGODB_ATLAS_URL+'/dailyJournalDB'
+  await mongoose.connect(mongoURL); // Cloud
+  // await mongoose.connect('mongodb://127.0.0.1:27017/dailyJournalDB'); // Local
   console.log("MongoDB conected");
   initDatabase();
 }
